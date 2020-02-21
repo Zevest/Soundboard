@@ -3,28 +3,28 @@ const fileName = [
     "more_than_", "hour_", "our_", "never_", "ever_", "after_", "work_is_", "over_"
 ]
 const soundfolder = "ressources/audio/";
-const mapInfoFolder = "ressources/map/";
+const chartInfoFolder = "ressources/chart/";
 class SoundBoard {
-    constructor(mapName) {
+    constructor(chartName) {
         this.soundButtons = [];
         this.pagesButtons = [];
         this.playButton = null;
-        this.mapInfo = null;
+        this.chartInfo = null;
         this.page = 0;
         this.mode = 1;
         this.pos = createVector();
         this.width = 0;
         this.height = 0;
-        this.loadMap(mapName);
+        this.loadChart(chartName);
     }
 
-    loadMap(mapName) {
-        console.log(mapInfoFolder + mapName);
-        let path = mapInfoFolder + mapName + ".json";
-        loadJSON(path, e => this.buildMap(mapName, e));
+    loadChart(chartName) {
+        console.log(chartInfoFolder + chartName);
+        let path = chartInfoFolder + chartName + ".json";
+        loadJSON(path, e => this.buildChart(chartName, e));
     }
 
-    buildMap(filename, data) {
+    buildChart(filename, data) {
         for (let j = 0; j < data.pages.length; ++j) {
             let tmp = [];
             for (let i = 0; i < data.pages[j].file.length; ++i) {
@@ -34,7 +34,7 @@ class SoundBoard {
             this.pagesButtons.push(new sButton(undefined, undefined, 100, 100, "" + (j + 1)));
             this.pagesButtons[j].action = () => this.page = j;
         }
-        this.mapInfo = data.info;
+        this.chartInfo = data.info;
         this.playButton = new SoundButton(this.getFile(filename, data.info.instrumental));
     }
 
@@ -89,8 +89,8 @@ class SoundBoard {
         this.soundButtons[this.page % this.soundButtons.length][i].trigger();
     }
 
-    getFile(mapName, filename) {
-        let path = soundfolder + mapName + "/" + filename + ".wav";
+    getFile(chartName, filename) {
+        let path = soundfolder + chartName + "/" + filename + ".wav";
         return path;
     }
 }
