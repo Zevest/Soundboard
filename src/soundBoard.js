@@ -19,7 +19,6 @@ class SoundBoard {
     }
 
     loadChart(chartName) {
-        console.log(chartInfoFolder + chartName);
         let path = chartInfoFolder + chartName + ".json";
         loadJSON(path, e => this.buildChart(chartName, e));
     }
