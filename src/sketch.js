@@ -45,7 +45,6 @@ function setup() {
     }
     keyBoardMode.setPos(width - 100, height - 200)
     keyBoardMode.setSize(100, 100);
-    console.log(soundboard.mapInfo);
 }
 
 function draw() {
