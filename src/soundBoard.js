@@ -3,45 +3,39 @@ const fileName = [
     "more_than_", "hour_", "our_", "never_", "ever_", "after_", "work_is_", "over_"
 ]
 const soundfolder = "ressources/audio/";
+const mapInfoFolder = "ressources/map/";
 class SoundBoard {
-    constructor() {
+    constructor(mapName) {
         this.soundButtons = [];
         this.pagesButtons = [];
-        this.playButton = new SoundButton(soundfolder + "instru.wav");
+        this.playButton = null;
+        this.mapInfo = null;
         this.page = 0;
-        this.mode = 0;
+        this.mode = 1;
         this.pos = createVector();
         this.width = 0;
         this.height = 0;
-        let tmp = [];
-        for (let i = 0; i < fileName.length; ++i) {
-            tmp.push(new SoundButton(this.getFile(i, 1)));
-        }
-        this.soundButtons.push(tmp);
-        tmp = [];
-        for (let i = 0; i < fileName.length; ++i) {
-            tmp.push(new SoundButton(this.getFile(i, i > 7 ? 2 : 1)));
-        }
-        this.soundButtons.push(tmp);
-        tmp = [];
-        for (let i = 0; i < fileName.length; ++i) {
-            tmp.push(new SoundButton(this.getFile(i, 3)));
-        }
-        this.soundButtons.push(tmp);
-        tmp = [];
-        for (let i = 0; i < fileName.length; ++i) {
-            tmp.push(new SoundButton(this.getFile(i, 4)));
-        }
-        this.soundButtons.push(tmp);
-        tmp = [];
-        for (let i = 0; i < fileName.length; ++i) {
-            tmp.push(new SoundButton(this.getFile(i, i > 7 ? 5 : 4)));
-        }
-        this.soundButtons.push(tmp);
-        for (let j = 0; j < this.soundButtons.length; ++j) {
+        this.loadMap(mapName);
+    }
+
+    loadMap(mapName) {
+        console.log(mapInfoFolder + mapName);
+        let path = mapInfoFolder + mapName + ".json";
+        loadJSON(path, e => this.buildMap(mapName, e));
+    }
+
+    buildMap(filename, data) {
+        for (let j = 0; j < data.pages.length; ++j) {
+            let tmp = [];
+            for (let i = 0; i < data.pages[j].file.length; ++i) {
+                tmp.push(new SoundButton(this.getFile(filename, data.pages[j].file[i])));
+            }
+            this.soundButtons.push(tmp);
             this.pagesButtons.push(new sButton(undefined, undefined, 100, 100, "" + (j + 1)));
             this.pagesButtons[j].action = () => this.page = j;
         }
+        this.mapInfo = data.info;
+        this.playButton = new SoundButton(this.getFile(filename, data.info.instrumental));
     }
 
     init(x, y, w, h) {
@@ -49,7 +43,7 @@ class SoundBoard {
         this.width = w;
         this.height = h;
         for (let j = 0; j < this.soundButtons.length; ++j) {
-            this.pagesButtons[j].setPos(this.pos.x + (this.width / this.soundButtons.length) * j, this.pos.y - 100)
+            this.pagesButtons[j].setPos((width / this.soundButtons.length) * j, 0)
             for (let i = 0; i < this.soundButtons[j].length; ++i) {
                 this.soundButtons[j][i].setPos(this.pos.x + this.width / 4.0 * (i % 4), this.pos.y + this.height / 4 * parseInt(i / 4));
                 this.soundButtons[j][i].setSize(this.width / 4.0, this.height / 4.0);
@@ -58,6 +52,7 @@ class SoundBoard {
         }
         this.playButton.setPos(width - 100, height - 100);
         this.playButton.setSize(100, 100);
+        this.playButton.setName("Play");
         this.playButton.action = function () {
             if (this.sound.isPlaying())
                 this.sound.stop();
@@ -94,9 +89,8 @@ class SoundBoard {
         this.soundButtons[this.page % this.soundButtons.length][i].trigger();
     }
 
-    getFile(i, j) {
-        let path = soundfolder + fileName[i] + j + ".wav";
-        //console.log("Loading : " + path);
+    getFile(mapName, filename) {
+        let path = soundfolder + mapName + "/" + filename + ".wav";
         return path;
     }
 }

@@ -1,0 +1,165 @@
+{
+    "info": {
+        "mapMaker": "Zevest",
+        "date": "2020-02-21T19: 23: 10.019Z",
+        "title": "Harder, Better, Faster",
+        "author": "DaftPunk",
+        "instrumental": "instru"
+    },
+    "pages": [
+        {
+            "format": ".wav",
+            "id": 0,
+            "file": [
+                "work_it_1",
+                "make_it_1",
+                "do_it_1",
+                "makes_us_1",
+                "harder_1",
+                "better_1",
+                "faster_1",
+                "stronger_1",
+                "more_than_1",
+                "hour_1",
+                "our_1",
+                "never_1",
+                "ever_1",
+                "after_1",
+                "work_is_1",
+                "over_1"
+            ]
+        },
+        {
+            "format": ".wav",
+            "id": 1,
+            "file": [
+                "work_it_1",
+                "make_it_1",
+                "do_it_1",
+                "makes_us_1",
+                "harder_1",
+                "better_1",
+                "faster_1",
+                "stronger_1",
+                "more_than_2",
+                "hour_2",
+                "our_2",
+                "never_2",
+                "ever_2",
+                "after_2",
+                "work_is_2",
+                "over_2"
+            ]
+        },
+        {
+            "format": ".wav",
+            "id": 2,
+            "file": [
+                "work_it_3",
+                "make_it_3",
+                "do_it_3",
+                "makes_us_3",
+                "harder_3",
+                "better_3",
+                "faster_3",
+                "stronger_3",
+                "more_than_3",
+                "hour_3",
+                "our_3",
+                "never_3",
+                "ever_3",
+                "after_3",
+                "work_is_3",
+                "over_3"
+            ]
+        },
+        {
+            "format": ".wav",
+            "id": 3,
+            "file": [
+                "work_it_4",
+                "make_it_4",
+                "do_it_4",
+                "makes_us_4",
+                "harder_4",
+                "better_4",
+                "faster_4",
+                "stronger_4",
+                "more_than_4",
+                "hour_4",
+                "our_4",
+                "never_4",
+                "ever_4",
+                "after_4",
+                "work_is_4",
+                "over_4"
+            ]
+        },
+        {
+            "format": ".wav",
+            "id": 4,
+            "file": [
+                "work_it_4",
+                "make_it_4",
+                "do_it_4",
+                "makes_us_4",
+                "harder_4",
+                "better_4",
+                "faster_4",
+                "stronger_4",
+                "more_than_5",
+                "hour_5",
+                "our_5",
+                "never_5",
+                "ever_5",
+                "after_5",
+                "work_is_5",
+                "over_5"
+            ]
+        },
+        {
+            "format": ".wav",
+            "id": 5,
+            "file": [
+                "work_it_6",
+                "make_it_6",
+                "do_it_6",
+                "makes_us_6",
+                "harder_6",
+                "better_6",
+                "faster_6",
+                "stronger_6",
+                "more_than_6",
+                "hour_6",
+                "our_6",
+                "never_6",
+                "ever_6",
+                "after_6",
+                "work_is_6",
+                "over_6"
+            ]
+        },
+        {
+            "format": ".wav",
+            "id": 8,
+            "file": [
+                "work_it_7",
+                "make_it_7",
+                "do_it_7",
+                "makes_us_7",
+                "harder_7",
+                "better_7",
+                "faster_7",
+                "stronger_7",
+                "more_than_7",
+                "hour_7",
+                "our_7",
+                "never_7",
+                "ever_7",
+                "after_7",
+                "work_is_7",
+                "over_7"
+            ]
+        }
+    ]
+}

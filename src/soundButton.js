@@ -8,7 +8,7 @@ class SoundButton extends sButton {
     constructor(path) {
         super();
         this.sound = loadSound(path);
-        console.log(this.sound);
+        this.sound.setVolume(0.6);
     }
 
     display() {

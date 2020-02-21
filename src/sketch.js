@@ -8,7 +8,7 @@ const keyLoc = [
 
         'j', 'k', 'l', 'm',
 
-        '&', 'é', '"', '\'', '(', '-',
+        '&', 'é', '"', '\'', '(', '-', 'è'
     ],
     [
         'q', 'w', 'e', 'r',
@@ -19,33 +19,49 @@ const keyLoc = [
 
         'j', 'k', 'l', ';',
 
-        '1', '2', '3', '4', '5', '6',
+        '1', '2', '3', '4', '5', '6', '7'
     ]
 ]
 let soundboard;
-
+let keyBoardMode;
 
 function preload() {
     soundFormats('wav');
-    //button = new SoundButton(width / 2, height / 2, 200, 200, getFile(0, 1));*
-    soundboard = new SoundBoard();
+    soundboard = new SoundBoard("daftpunk");
+
+
 }
 
 function setup() {
     createCanvas(600, 600);
     soundboard.init(0, 100, 500, 500);
     textSize(20);
+    keyBoardMode = new sButton();
+    keyBoardMode.setName(soundboard.mode % 2 == 0 ? "AZERTY" : "QWERTY");
+    keyBoardMode.action = () => {
+        soundboard.mode++;
+        soundboard.mode %= 2;
+        keyBoardMode.setName(soundboard.mode % 2 == 0 ? "AZERTY" : "QWERTY");
+    }
+    keyBoardMode.setPos(width - 100, height - 200)
+    keyBoardMode.setSize(100, 100);
+    console.log(soundboard.mapInfo);
 }
 
 function draw() {
     textAlign(CENTER);
     background(0);
     soundboard.display();
+    keyBoardMode.display();
     //noLoop();
 }
 
 function mousePressed() {
     soundboard.update();
+    keyBoardMode.update();
+}
+function mouseReleased() {
+    keyBoardMode.unPressed();
 }
 
 function keyPressed() {
@@ -135,6 +151,9 @@ function keyPressed() {
             break;
         case keyLoc[soundboard.mode][21]:
             soundboard.page = 5;
+            break;
+        case keyLoc[soundboard.mode][22]:
+            soundboard.page = 6;
             break;
 
     }
