@@ -21,7 +21,7 @@ const keyLoc = [
 
         '1', '2', '3', '4', '5', '6', '7'
     ]
-]
+];
 let soundboard;
 let keyBoardMode;
 
@@ -42,8 +42,8 @@ function setup() {
         soundboard.mode++;
         soundboard.mode %= 2;
         keyBoardMode.setName(soundboard.mode % 2 == 0 ? "AZERTY" : "QWERTY");
-    }
-    keyBoardMode.setPos(width - 100, height - 200)
+    };
+    keyBoardMode.setPos(width - 100, height - 200);
     keyBoardMode.setSize(100, 100);
 }
 
